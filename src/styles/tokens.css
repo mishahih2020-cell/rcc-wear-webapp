@@ -40,8 +40,13 @@
   --dur-hero: 0.42s;
   --dur-sheet: 0.4s;
 
+  /* На вебе/в браузере — системная safe area. Внутри Telegram useTelegram()
+     перезаписывает эти переменные суммой safeAreaInset + contentSafeAreaInset,
+     чтобы контент не оказался под кнопками закрытия/меню в fullscreen-режиме. */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 
   --nav-height: 58px;
   --header-height: 52px;

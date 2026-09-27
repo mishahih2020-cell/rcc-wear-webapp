@@ -4,16 +4,30 @@ import { useUserStore } from "../store/userStore";
 
 interface TelegramState {
   isTelegram: boolean;
+  isFullscreen: boolean;
   themeParams: Record<string, string>;
-  safeAreaInset: { top: number; bottom: number; left: number; right: number };
+}
+
+function applySafeAreaVars() {
+  const root = document.documentElement.style;
+  const safe = WebApp.safeAreaInset ?? { top: 0, bottom: 0, left: 0, right: 0 };
+  const content = WebApp.contentSafeAreaInset ?? { top: 0, bottom: 0, left: 0, right: 0 };
+
+  // contentSafeAreaInset — область, перекрытая кнопками Telegram (закрыть, меню) в fullscreen.
+  // safeAreaInset — системная safe area устройства (чёлка, home indicator).
+  // Складываем оба, чтобы интерфейс не оказался ни под системными вырезами, ни под кнопками Telegram.
+  root.setProperty("--safe-top", `${safe.top + content.top}px`);
+  root.setProperty("--safe-bottom", `${safe.bottom + content.bottom}px`);
+  root.setProperty("--safe-left", `${safe.left + content.left}px`);
+  root.setProperty("--safe-right", `${safe.right + content.right}px`);
 }
 
 export function useTelegram(): TelegramState {
   const setTelegramProfile = useUserStore((state) => state.setTelegramProfile);
   const [state, setState] = useState<TelegramState>({
     isTelegram: false,
+    isFullscreen: false,
     themeParams: {},
-    safeAreaInset: { top: 0, bottom: 0, left: 0, right: 0 },
   });
 
   useEffect(() => {
@@ -21,6 +35,18 @@ export function useTelegram(): TelegramState {
       const isTelegram = Boolean(WebApp.initData);
       WebApp.ready();
       WebApp.expand();
+
+      // Без этого свайп вниз по контенту сворачивает/закрывает мини-приложение.
+      WebApp.disableVerticalSwipes();
+
+      try {
+        WebApp.requestFullscreen();
+      } catch {
+        // fullscreen не поддерживается на этой платформе (например, Telegram Desktop) — остаёмся в expanded режиме
+      }
+
+      WebApp.setBackgroundColor("#ffffff");
+      WebApp.setHeaderColor("#ffffff");
 
       const user = WebApp.initDataUnsafe?.user;
       if (user) {
@@ -32,16 +58,32 @@ export function useTelegram(): TelegramState {
         });
       }
 
+      applySafeAreaVars();
       setState({
         isTelegram,
+        isFullscreen: WebApp.isFullscreen,
         themeParams: WebApp.themeParams as unknown as Record<string, string>,
-        safeAreaInset: {
-          top: WebApp.safeAreaInset?.top ?? 0,
-          bottom: WebApp.safeAreaInset?.bottom ?? 0,
-          left: WebApp.safeAreaInset?.left ?? 0,
-          right: WebApp.safeAreaInset?.right ?? 0,
-        },
       });
+
+      const handleSafeAreaChange = () => applySafeAreaVars();
+      const handleFullscreenChanged = () => {
+        applySafeAreaVars();
+        setState((prev) => ({ ...prev, isFullscreen: WebApp.isFullscreen }));
+      };
+
+      WebApp.onEvent("safeAreaChanged", handleSafeAreaChange);
+      WebApp.onEvent("contentSafeAreaChanged", handleSafeAreaChange);
+      WebApp.onEvent("viewportChanged", handleSafeAreaChange);
+      WebApp.onEvent("fullscreenChanged", handleFullscreenChanged);
+      WebApp.onEvent("fullscreenFailed", handleFullscreenChanged);
+
+      return () => {
+        WebApp.offEvent("safeAreaChanged", handleSafeAreaChange);
+        WebApp.offEvent("contentSafeAreaChanged", handleSafeAreaChange);
+        WebApp.offEvent("viewportChanged", handleSafeAreaChange);
+        WebApp.offEvent("fullscreenChanged", handleFullscreenChanged);
+        WebApp.offEvent("fullscreenFailed", handleFullscreenChanged);
+      };
     } catch {
       setState((prev) => ({ ...prev, isTelegram: false }));
     }

@@ -13,7 +13,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: var(--max-content-width);
-  max-height: 86vh;
+  max-height: 86dvh;
   background: var(--color-white);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   z-index: 51;

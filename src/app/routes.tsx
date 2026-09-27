@@ -17,7 +17,7 @@ const OrderSuccess = lazy(() => import("../pages/OrderSuccess").then((m) => ({ d
 const Search = lazy(() => import("../pages/Search").then((m) => ({ default: m.Search })));
 
 function RouteFallback() {
-  return <div style={{ minHeight: "100vh", background: "var(--color-white)" }} />;
+  return <div style={{ minHeight: "100dvh", background: "var(--color-white)" }} />;
 }
 
 export function AppRoutes() {

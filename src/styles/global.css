@@ -24,7 +24,7 @@ body {
 
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
 }
@@ -32,7 +32,7 @@ body {
 #root {
   width: 100%;
   max-width: var(--max-content-width);
-  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-white);
   position: relative;
   display: flex;
