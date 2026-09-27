@@ -1,0 +1,1 @@
+import{h as e,m as t}from"./index-Hc6fmAOm.js";var n={tshirts:`Футболки`,shorts:`Шорты`,trousers:`Брюки`,hoodies:`Худи`,outerwear:`Верхняя одежда`},r=e()(t(e=>({savedSizes:{},setSize:(t,n)=>e(e=>({savedSizes:{...e.savedSizes,[t]:n}}))}),{name:`rcc-sizes`}));export{r as n,n as t};
