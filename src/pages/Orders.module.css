@@ -1,0 +1,117 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.cardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+}
+
+.orderNumber {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.orderDate {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin: 2px 0 0;
+}
+
+.cardRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.status {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.statusNew {
+  background: rgba(245, 34, 45, 0.1);
+  color: var(--color-red);
+}
+
+.statusProgress {
+  background: rgba(17, 17, 17, 0.08);
+  color: var(--color-text-primary);
+}
+
+.statusDone {
+  background: rgba(31, 177, 95, 0.12);
+  color: var(--color-success);
+}
+
+.total {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chevron {
+  transition: transform var(--dur-micro) var(--ease-out);
+  color: var(--color-text-secondary);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--color-text-secondary);
+}
+
+.details {
+  padding: 0 var(--space-4) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--space-2);
+}
+
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.detailsMuted {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-2);
+}
+
+.detailsRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}

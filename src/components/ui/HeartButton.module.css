@@ -1,0 +1,26 @@
+.button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ripple {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-red);
+  z-index: 0;
+}

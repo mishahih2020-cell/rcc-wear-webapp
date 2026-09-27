@@ -1,0 +1,25 @@
+.wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.current {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+.large .current {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.old {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}

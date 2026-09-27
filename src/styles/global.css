@@ -1,0 +1,90 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/oswald/500.css";
+@import "@fontsource/oswald/600.css";
+@import "@fontsource/oswald/700.css";
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  max-width: var(--max-content-width);
+  min-height: 100vh;
+  background: var(--color-white);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

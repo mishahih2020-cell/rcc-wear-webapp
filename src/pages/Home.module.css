@@ -1,0 +1,173 @@
+.hero {
+  position: relative;
+  height: 58vh;
+  min-height: 360px;
+  max-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+.heroRing {
+  position: absolute;
+  top: -60px;
+  right: -90px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.heroRing::after {
+  content: "";
+  position: absolute;
+  inset: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.heroStripe {
+  position: absolute;
+  top: 0;
+  right: 64px;
+  width: 3px;
+  height: 100%;
+  background: var(--color-red);
+  transform: skewX(-8deg);
+  opacity: 0.9;
+}
+
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.heroKicker {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  color: var(--color-white);
+  font-size: 32px;
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.heroTitleAccent {
+  color: var(--color-red);
+}
+
+.heroSubtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  margin: 0;
+  max-width: 260px;
+}
+
+.heroButton {
+  width: auto;
+  padding: 0 var(--space-6);
+  margin-top: var(--space-3);
+}
+
+.quickCategories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.quickCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-1);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.quickIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-off-white);
+}
+
+.quickCard span {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.rail {
+  padding-top: var(--space-4);
+}
+
+.railHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 var(--space-4) var(--space-3);
+}
+
+.railTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.railLink {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.railScroll {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding: 0 var(--space-4) var(--space-2);
+}
+
+.railCard {
+  flex: 0 0 148px;
+}

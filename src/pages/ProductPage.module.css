@@ -1,0 +1,251 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: calc(88px + var(--safe-bottom));
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.topBar {
+  position: absolute;
+  top: var(--safe-top);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+}
+
+.iconButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+}
+
+.topBarActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.mainImage {
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  background: var(--color-off-white);
+  cursor: pointer;
+}
+
+.mainImageInner {
+  width: 100%;
+  height: 100%;
+}
+
+.thumbRow {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  overflow-x: auto;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 52px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  opacity: 0.55;
+  transition: opacity var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+
+.thumbActive {
+  opacity: 1;
+  border-color: var(--color-dark);
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  padding: var(--space-2) var(--space-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 0;
+  line-height: 1.32;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.dotIn {
+  background: var(--color-success);
+}
+
+.dotOut {
+  background: var(--color-text-secondary);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: var(--space-2) 0 0;
+}
+
+.sizeChartLink {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+}
+
+.sizeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.sizeChip {
+  min-width: 44px;
+  height: 40px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: all var(--dur-micro) var(--ease-out);
+}
+
+.sizeChip:disabled {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+.sizeChipActive {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.recommendedHint {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: -6px 0 0;
+}
+
+.colorRow {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.colorDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  transition: transform var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+}
+
+.colorDotActive {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-dark);
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-content-width);
+  padding: var(--space-3) var(--space-4) calc(var(--space-3) + var(--safe-bottom));
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  z-index: 20;
+}
+
+.addWrap {
+  position: relative;
+}
+
+.flyThumb {
+  position: absolute;
+  right: 20px;
+  bottom: 60%;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.flyThumbImage {
+  width: 100%;
+  height: 100%;
+}

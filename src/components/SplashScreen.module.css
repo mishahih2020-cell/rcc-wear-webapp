@@ -1,0 +1,133 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+.wrap.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 31, 43, 0.4) 0%, rgba(239, 31, 43, 0) 68%);
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+.logo {
+  position: relative;
+  width: 168px;
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(245, 34, 45, 0.12));
+  animation: logoPulse 1.8s ease-in-out infinite;
+}
+
+.fastCycle {
+  animation-duration: 0.6s;
+}
+
+.logoLeaving {
+  animation: none;
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.loading {
+  position: absolute;
+  bottom: calc(var(--space-8) + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.loadingText {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-text-secondary);
+}
+
+.progressTrack {
+  width: 96px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-light-gray);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--color-dark);
+  width: 12%;
+  animation: progressGrow 1.4s ease-in-out forwards;
+}
+
+.progressShort {
+  animation-duration: 0.5s;
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(0.96);
+  }
+  25% {
+    transform: scale(1.04);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(0.96);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.15;
+  }
+  35% {
+    opacity: 0.35;
+  }
+  60% {
+    opacity: 0.18;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes progressGrow {
+  from {
+    width: 12%;
+  }
+  to {
+    width: 100%;
+  }
+}

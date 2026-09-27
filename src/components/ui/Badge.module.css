@@ -1,0 +1,29 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 19px;
+  padding: 0 6px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.red {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.dark {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.outline {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}

@@ -1,0 +1,49 @@
+:root {
+  --color-white: #ffffff;
+  --color-off-white: #f7f7f5;
+  --color-light-gray: #efefec;
+  --color-text-primary: #111111;
+  --color-text-secondary: #7a7a76;
+  --color-border: #e5e4e0;
+  --color-border-strong: #d6d5d0;
+  --color-red: #ef1f2b;
+  --color-red-pressed: #c8161f;
+  --color-dark: #111111;
+  --color-success: #1fb15f;
+
+  --font-body: "Inter Variable", "Inter", -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --font-display: "Oswald", "Inter Variable", "Inter", sans-serif;
+
+  --radius-xs: 3px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --shadow-xs: 0 1px 0 rgba(17, 17, 17, 0.06);
+  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.05);
+  --shadow-md: 0 12px 32px rgba(17, 17, 17, 0.1);
+  --shadow-sheet: 0 -4px 32px rgba(17, 17, 17, 0.12);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --dur-micro: 0.18s;
+  --dur-normal: 0.32s;
+  --dur-hero: 0.42s;
+  --dur-sheet: 0.4s;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  --nav-height: 58px;
+  --header-height: 52px;
+  --max-content-width: 480px;
+}

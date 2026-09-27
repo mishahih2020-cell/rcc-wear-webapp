@@ -1,0 +1,35 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 6px;
+}
+
+.control {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light-gray);
+  color: var(--color-text-primary);
+  transition: transform var(--dur-micro) var(--ease-out), opacity var(--dur-micro) var(--ease-out);
+}
+
+.control:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.control:disabled {
+  opacity: 0.35;
+}
+
+.value {
+  min-width: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
