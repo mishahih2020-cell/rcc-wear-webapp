@@ -1,6 +1,28 @@
 import type { Product, ProductSize } from "./types";
 import { COLOR_LIBRARY } from "./colors";
 
+import shortsArhangelTraining1 from "../assets/products/shorts-arhangel-training-1.jpg";
+import tshirtEssential1 from "../assets/products/tshirt-essential-1.jpg";
+import tshirtEssential2 from "../assets/products/tshirt-essential-2.jpg";
+import tshirtLogo1 from "../assets/products/tshirt-logo-1.jpg";
+import tshirtLogo2 from "../assets/products/tshirt-logo-2.jpg";
+import hoodieTraining1 from "../assets/products/hoodie-training-1.jpg";
+import hoodieTraining2 from "../assets/products/hoodie-training-2.jpg";
+import hoodieTraining3 from "../assets/products/hoodie-training-3.jpg";
+import hoodieClub1 from "../assets/products/hoodie-club-1.jpg";
+import hoodieClub2 from "../assets/products/hoodie-club-2.jpg";
+import outerwearWindbreaker1 from "../assets/products/outerwear-windbreaker-1.jpg";
+import outerwearWindbreaker2 from "../assets/products/outerwear-windbreaker-2.jpg";
+import outerwearWindbreaker3 from "../assets/products/outerwear-windbreaker-3.jpg";
+import outerwearBomber1 from "../assets/products/outerwear-bomber-1.jpg";
+import outerwearBomber2 from "../assets/products/outerwear-bomber-2.jpg";
+import rashguardLongsleeve1 from "../assets/products/rashguard-longsleeve-1.jpg";
+import rashguardLongsleeve2 from "../assets/products/rashguard-longsleeve-2.jpg";
+import rashguardLongsleeve3 from "../assets/products/rashguard-longsleeve-3.jpg";
+import rashguardShortsleeve1 from "../assets/products/rashguard-shortsleeve-1.jpg";
+import rashguardShortsleeve2 from "../assets/products/rashguard-shortsleeve-2.jpg";
+import rashguardShortsleeve3 from "../assets/products/rashguard-shortsleeve-3.jpg";
+
 const sizes = (available: string[], all = ["XS", "S", "M", "L", "XL", "XXL"]): ProductSize[] =>
   all.map((label) => ({
     id: label.toLowerCase(),
@@ -62,7 +84,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 41,
     colors: [COLOR_LIBRARY.black],
     sizes: sizes(["S", "M", "L", "XL", "XXL"]),
-    images: ["shorts:2", "shorts:0", "shorts:3"],
+    images: [shortsArhangelTraining1, "shorts:0", "shorts:3"],
     description:
       "Лимитированная коллаборация «Архангел Михаил x RW». Плотная посадка для единоборств, усиленные швы, графика на бедре.",
     recommendedSize: "L",
@@ -124,7 +146,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 212,
     colors: [COLOR_LIBRARY.white, COLOR_LIBRARY.black, COLOR_LIBRARY.gray],
     sizes: sizes(["XS", "S", "M", "L", "XL", "XXL"]),
-    images: ["tshirt:0", "tshirt:1"],
+    images: [tshirtEssential1, tshirtEssential2],
     description: "Базовая футболка из плотного хлопка. Прямой крой, минималистичный логотип на груди.",
     recommendedSize: "M",
     collection: "Essentials",
@@ -144,7 +166,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 58,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.white],
     sizes: sizes(["S", "M", "L", "XL"]),
-    images: ["tshirt:1", "tshirt:0"],
+    images: [tshirtLogo1, tshirtLogo2],
     description: "Футболка с крупным логотипом RCC WEAR на спине. Плотный хлопковый трикотаж.",
     recommendedSize: "M",
     collection: "Essentials",
@@ -164,7 +186,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 71,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.gray],
     sizes: sizes(["S", "M", "L", "XL", "XXL"]),
-    images: ["hoodie:0", "hoodie:1"],
+    images: [hoodieTraining1, hoodieTraining2, hoodieTraining3],
     description: "Плотное худи с начёсом для разминки и повседневной носки. Кенгуру-карман, регулируемый капюшон.",
     recommendedSize: "L",
     collection: "Sport Collection",
@@ -184,7 +206,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 47,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.milk],
     sizes: sizes(["M", "L", "XL"]),
-    images: ["hoodie:1", "hoodie:0"],
+    images: [hoodieClub1, hoodieClub2],
     description: "Клубное худи из плотного футера. Вышивка RCC CLUB на груди.",
     recommendedSize: "L",
     collection: "RCC CLUB",
@@ -204,7 +226,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 28,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.red],
     sizes: sizes(["S", "M", "L", "XL"]),
-    images: ["outerwear:0", "outerwear:1"],
+    images: [outerwearWindbreaker1, outerwearWindbreaker2, outerwearWindbreaker3],
     description: "Лёгкая ветрозащитная куртка для тренировок на улице. Водоотталкивающая пропитка, вентиляция.",
     recommendedSize: "M",
     collection: "Sport Collection",
@@ -224,7 +246,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 15,
     colors: [COLOR_LIBRARY.black],
     sizes: sizes([]),
-    images: ["outerwear:1", "outerwear:0"],
+    images: [outerwearBomber1, outerwearBomber2],
     description: "Плотный бомбер с трикотажными манжетами. Внутренняя подкладка, минималистичная фурнитура.",
     recommendedSize: "L",
     collection: "Heritage",
@@ -244,7 +266,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 36,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.red],
     sizes: sizes(["S", "M", "L", "XL"]),
-    images: ["rashguard:0", "rashguard:1"],
+    images: [rashguardLongsleeve1, rashguardLongsleeve2, rashguardLongsleeve3],
     description: "Компрессионный рашгард с длинным рукавом для единоборств. Плоские швы, быстросохнущая ткань.",
     recommendedSize: "M",
     collection: "Fight Collection",
@@ -264,7 +286,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 52,
     colors: [COLOR_LIBRARY.black, COLOR_LIBRARY.gray],
     sizes: sizes(["XS", "S", "M", "L", "XL", "XXL"]),
-    images: ["rashguard:1", "rashguard:0"],
+    images: [rashguardShortsleeve1, rashguardShortsleeve2, rashguardShortsleeve3],
     description: "Компрессионный рашгард с коротким рукавом. Плотное прилегание, поддержка мышц во время тренировки.",
     recommendedSize: "M",
     collection: "Fight Collection",
