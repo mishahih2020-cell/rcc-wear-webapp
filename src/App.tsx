@@ -28,7 +28,7 @@ function useSplashPhase() {
           // localStorage может быть недоступен в приватном режиме Telegram WebView
         }
       },
-      short ? 700 : 1500,
+      short ? 700 : 2000,
     );
     return () => window.clearTimeout(activeTimer);
   }, [short]);

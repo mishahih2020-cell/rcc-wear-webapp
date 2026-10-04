@@ -29,7 +29,7 @@
   height: 190px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(239, 31, 43, 0.4) 0%, rgba(239, 31, 43, 0) 68%);
-  animation: glowPulse 1.8s ease-in-out infinite;
+  animation: glowPulse 2s ease-in-out infinite;
 }
 
 .logo {
@@ -37,7 +37,7 @@
   width: 168px;
   height: auto;
   filter: drop-shadow(0 0 18px rgba(245, 34, 45, 0.12));
-  animation: logoPulse 1.8s ease-in-out infinite;
+  animation: logoPulse 2s ease-in-out infinite;
 }
 
 .fastCycle {
@@ -80,7 +80,7 @@
   height: 100%;
   background: var(--color-dark);
   width: 12%;
-  animation: progressGrow 1.4s ease-in-out forwards;
+  animation: progressGrow 1.9s ease-in-out forwards;
 }
 
 .progressShort {
