@@ -25,6 +25,7 @@
 }
 
 .iconButton {
+  position: relative;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -34,6 +35,24 @@
   align-items: center;
   justify-content: center;
   color: var(--color-text-primary);
+}
+
+.cartBadge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-red);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .topBarActions {
@@ -234,15 +253,12 @@
 }
 
 .flyThumb {
-  position: absolute;
-  right: 20px;
-  bottom: 60%;
-  width: 34px;
-  height: 34px;
+  position: fixed;
   border-radius: var(--radius-sm);
   overflow: hidden;
   pointer-events: none;
-  z-index: 25;
+  z-index: 90;
+  box-shadow: var(--shadow-md);
 }
 
 .flyThumbImage {

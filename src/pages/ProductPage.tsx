@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ChevronLeft, Share2, Star, Check } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, Share2, ShoppingBag, Star, Check } from "lucide-react";
 import { getProductById } from "../data/products";
 import { ProductImage } from "../components/ui/ProductImage";
 import { HeartButton } from "../components/ui/HeartButton";
@@ -9,6 +9,7 @@ import { Price } from "../components/ui/Price";
 import { Button } from "../components/ui/Button";
 import { ProductGallery } from "../components/ProductGallery";
 import { SizeChartSheet } from "../components/SizeChartSheet";
+import { AddedToCartToast } from "../components/AddedToCartToast";
 import { EmptyState } from "../components/ui/EmptyState";
 import { useCartStore } from "../store/cartStore";
 import { useFavoritesStore } from "../store/favoritesStore";
@@ -29,6 +30,7 @@ export function ProductPage() {
   const product = useMemo(() => (id ? getProductById(id) : undefined), [id]);
 
   const addItem = useCartStore((state) => state.addItem);
+  const cartCount = useCartStore((state) => state.items.reduce((sum, item) => sum + item.quantity, 0));
   const isFavorite = useFavoritesStore((state) => (product ? state.isFavorite(product.id) : false));
   const toggleFavorite = useFavoritesStore((state) => state.toggleProduct);
   const savedSizes = useSizesStore((state) => state.savedSizes);
@@ -43,7 +45,12 @@ export function ProductPage() {
   );
   const [selectedColor, setSelectedColor] = useState(product?.colors[0]?.id ?? "");
   const [added, setAdded] = useState(false);
-  const [flying, setFlying] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
+  const [flight, setFlight] = useState<{ left: number; top: number; size: number; dx: number; dy: number } | null>(null);
+  const [cartBump, setCartBump] = useState(false);
+
+  const mainImageRef = useRef<HTMLDivElement>(null);
+  const cartIconRef = useRef<HTMLButtonElement>(null);
 
   if (!product) {
     return (
@@ -66,9 +73,30 @@ export function ProductPage() {
     if (!selectedSize) return;
     addItem({ productId: product.id, sizeId: selectedSize.toLowerCase(), colorId: selectedColor });
     setAdded(true);
-    setFlying(true);
-    window.setTimeout(() => setFlying(false), 650);
-    window.setTimeout(() => setAdded(false), 1600);
+
+    const imageEl = mainImageRef.current;
+    const cartEl = cartIconRef.current;
+    if (imageEl && cartEl) {
+      const imageRect = imageEl.getBoundingClientRect();
+      const cartRect = cartEl.getBoundingClientRect();
+      const size = 84;
+      const left = imageRect.left + imageRect.width / 2 - size / 2;
+      const top = imageRect.top + imageRect.height / 2 - size / 2;
+      const dx = cartRect.left + cartRect.width / 2 - (left + size / 2);
+      const dy = cartRect.top + cartRect.height / 2 - (top + size / 2);
+      setFlight({ left, top, size, dx, dy });
+    }
+
+    const FLIGHT_DURATION = 950;
+    window.setTimeout(() => {
+      setFlight(null);
+      setCartBump(true);
+      window.setTimeout(() => setCartBump(false), 400);
+    }, FLIGHT_DURATION);
+
+    setToastOpen(true);
+    window.setTimeout(() => setToastOpen(false), 2600);
+    window.setTimeout(() => setAdded(false), 1800);
   };
 
   const handleShare = async () => {
@@ -95,10 +123,27 @@ export function ProductPage() {
           <button type="button" className={styles.iconButton} onClick={handleShare} aria-label="Поделиться">
             <Share2 size={19} strokeWidth={1.75} />
           </button>
+          <motion.button
+            ref={cartIconRef}
+            type="button"
+            className={styles.iconButton}
+            onClick={() => navigate("/cart")}
+            aria-label="Корзина"
+            animate={cartBump ? { scale: [1, 1.22, 1] } : { scale: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <ShoppingBag size={18} strokeWidth={1.75} />
+            {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
+          </motion.button>
         </div>
       </div>
 
-      <motion.div layoutId={`product-image-${product.id}`} className={styles.mainImage} onClick={() => setGalleryOpen(true)}>
+      <motion.div
+        ref={mainImageRef}
+        layoutId={`product-image-${product.id}`}
+        className={styles.mainImage}
+        onClick={() => setGalleryOpen(true)}
+      >
         <ProductImage src={product.images[activeImage]} alt={product.title} className={styles.mainImageInner} />
       </motion.div>
 
@@ -170,16 +215,6 @@ export function ProductPage() {
 
       <div className={styles.footer}>
         <div className={styles.addWrap}>
-          {flying && (
-            <motion.div
-              className={styles.flyThumb}
-              initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-              animate={{ x: 120, y: -230, scale: 0.15, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeIn" }}
-            >
-              <ProductImage src={product.images[activeImage]} alt="" className={styles.flyThumbImage} />
-            </motion.div>
-          )}
           <Button variant="primary" disabled={!product.inStock || !selectedSize} onClick={handleAddToCart}>
             {added ? (
               <>
@@ -191,6 +226,28 @@ export function ProductPage() {
           </Button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {flight && (
+          <motion.div
+            className={styles.flyThumb}
+            style={{ left: flight.left, top: flight.top, width: flight.size, height: flight.size }}
+            initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: 0 }}
+            animate={{
+              x: [0, flight.dx * 0.42, flight.dx],
+              y: [0, flight.dy * 0.6 - 60, flight.dy],
+              scale: [1, 0.75, 0.18],
+              rotate: [0, -6, 8],
+              opacity: [1, 1, 0.4],
+            }}
+            transition={{ duration: 0.95, ease: [0.3, 0.1, 0.3, 1], times: [0, 0.55, 1] }}
+          >
+            <ProductImage src={product.images[activeImage]} alt="" className={styles.flyThumbImage} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AddedToCartToast open={toastOpen} title={product.title} image={product.images[activeImage]} />
 
       <ProductGallery
         open={galleryOpen}
