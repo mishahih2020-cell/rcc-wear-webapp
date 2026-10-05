@@ -62,6 +62,7 @@
 
 .mainImage {
   width: 100%;
+  margin-top: var(--safe-top);
   aspect-ratio: 1 / 1.05;
   background: var(--color-off-white);
   cursor: pointer;
