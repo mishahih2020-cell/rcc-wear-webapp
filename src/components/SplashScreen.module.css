@@ -25,19 +25,19 @@
 
 .glow {
   position: absolute;
-  width: 190px;
-  height: 190px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(239, 31, 43, 0.4) 0%, rgba(239, 31, 43, 0) 68%);
-  animation: glowPulse 2s ease-in-out infinite;
+  animation: glowPulse 2.6s ease-in-out infinite;
 }
 
 .logo {
   position: relative;
-  width: 168px;
+  width: 220px;
   height: auto;
   filter: drop-shadow(0 0 18px rgba(245, 34, 45, 0.12));
-  animation: logoPulse 2s ease-in-out infinite;
+  animation: logoPulse 2.6s ease-in-out infinite;
 }
 
 .fastCycle {
@@ -80,7 +80,7 @@
   height: 100%;
   background: var(--color-dark);
   width: 12%;
-  animation: progressGrow 1.9s ease-in-out forwards;
+  animation: progressGrow 2.5s ease-in-out forwards;
 }
 
 .progressShort {

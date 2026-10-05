@@ -8,6 +8,11 @@ interface TelegramState {
   themeParams: Record<string, string>;
 }
 
+// Гарантированный минимум под круглые кнопки закрытия/меню Telegram в fullscreen —
+// на части клиентов contentSafeAreaInset приходит нулевым или заниженным, и контент
+// реально оказывается под кнопками, хотя API формально отчитался об отступе.
+const MIN_FULLSCREEN_TOP_CLEARANCE = 64;
+
 function applySafeAreaVars() {
   const root = document.documentElement.style;
   const safe = WebApp.safeAreaInset ?? { top: 0, bottom: 0, left: 0, right: 0 };
@@ -16,7 +21,9 @@ function applySafeAreaVars() {
   // contentSafeAreaInset — область, перекрытая кнопками Telegram (закрыть, меню) в fullscreen.
   // safeAreaInset — системная safe area устройства (чёлка, home indicator).
   // Складываем оба, чтобы интерфейс не оказался ни под системными вырезами, ни под кнопками Telegram.
-  root.setProperty("--safe-top", `${safe.top + content.top}px`);
+  const contentTop = WebApp.isFullscreen ? Math.max(content.top, MIN_FULLSCREEN_TOP_CLEARANCE) : content.top;
+
+  root.setProperty("--safe-top", `${safe.top + contentTop}px`);
   root.setProperty("--safe-bottom", `${safe.bottom + content.bottom}px`);
   root.setProperty("--safe-left", `${safe.left + content.left}px`);
   root.setProperty("--safe-right", `${safe.right + content.right}px`);
