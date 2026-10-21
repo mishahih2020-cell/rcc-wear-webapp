@@ -16,7 +16,15 @@ interface FilterSheetProps {
 }
 
 const SIZE_OPTIONS = ["XS", "S", "M", "L", "XL", "XXL"];
-const COLLECTION_OPTIONS = ["Sport Collection", "Essentials", "Архангел Михаил x RW", "Fight Collection", "RCC CLUB", "Heritage"];
+const COLLECTION_OPTIONS = [
+  "Sport Collection",
+  "Essentials",
+  "Архангел Михаил x RW",
+  "Petr Yan x RW",
+  "Fight Collection",
+  "RCC CLUB",
+  "Heritage",
+];
 const SEASON_OPTIONS = ["Всесезон", "Осень-Зима", "Весна-Лето"];
 const MATERIAL_OPTIONS = ["Полиэстер", "Хлопок", "Эластан"];
 
