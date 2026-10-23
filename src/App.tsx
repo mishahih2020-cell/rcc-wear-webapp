@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { AppRoutes } from "./app/routes";
 import { SplashScreen } from "./components/SplashScreen";
+import { DebugSafeArea } from "./components/DebugSafeArea";
 import { useTelegram } from "./hooks/useTelegram";
 
 const SPLASH_SEEN_KEY = "rcc-splash-seen";
@@ -48,6 +49,7 @@ export default function App() {
 
   return (
     <>
+      <DebugSafeArea />
       {phase !== "gone" && <SplashScreen short={short} leaving={phase === "leaving"} onLeaveEnd={finishLeaving} />}
       {phase === "gone" && (
         <motion.div
