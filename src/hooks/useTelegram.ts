@@ -12,7 +12,7 @@ interface TelegramState {
 // contentSafeAreaInset и даже isFullscreen приходят ненадёжно (нулевыми/с задержкой/не
 // теми, что реально нужно), и контент оказывается под кнопками. Поэтому внутри Telegram
 // применяем отступ всегда, не дожидаясь подтверждения fullscreen от API.
-const MIN_TOP_CLEARANCE = 92;
+const MIN_TOP_CLEARANCE = 132;
 
 function applySafeAreaVars() {
   const root = document.documentElement.style;
